@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chhotu Gesture</string>
+    <string name="accessibility_service_description">Chhotu Gesture uses accessibility service to perform system-wide actions based on hand gestures detected through the camera. This enables hands-free control of volume, media playback, brightness, and navigation for users with motor impairments or anyone wanting gesture-based control.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_detect">Detect</string>
+    <string name="nav_gestures">Gestures</string>
+    <string name="nav_train">Train</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Gestures -->
+    <string name="gesture_open_hand">Open Hand</string>
+    <string name="gesture_fist">Fist</string>
+    <string name="gesture_thumbs_up">Thumbs Up</string>
+    <string name="gesture_peace">Peace Sign</string>
+    <string name="gesture_pointing">Pointing</string>
+
+    <!-- Actions -->
+    <string name="action_play_pause">Play / Pause</string>
+    <string name="action_volume_up">Volume Up</string>
+    <string name="action_volume_down">Volume Down</string>
+    <string name="action_next_track">Next Track</string>
+    <string name="action_mute">Mute</string>
+    <string name="action_brightness_up">Brightness Up</string>
+    <string name="action_brightness_down">Brightness Down</string>
+    <string name="action_scroll_up">Scroll Up</string>
+    <string name="action_scroll_down">Scroll Down</string>
+    <string name="action_go_back">Go Back</string>
+    <string name="action_go_home">Go Home</string>
+    <string name="action_flashlight">Toggle Flashlight</string>
+
+    <!-- Detection -->
+    <string name="detection_active">Gesture detection active</string>
+    <string name="detection_paused">Detection paused</string>
+    <string name="no_camera">No camera available</string>
+    <string name="camera_permission_required">Camera permission is required for gesture detection</string>
+    <string name="low_light_warning">Low light detected — gesture accuracy may be reduced</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Gesture Detection</string>
+    <string name="notification_channel_description">Shows when gesture detection is running in the background</string>
+    <string name="notification_title">Chhotu Gesture Active</string>
+    <string name="notification_text">Detecting hand gestures…</string>
+</resources>

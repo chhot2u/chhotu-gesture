@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+app/build/
+
+# IDE
+.idea/
+*.iml
+local.properties
+
+# Keystore (NEVER commit real signing keys)
+*.jks
+*.keystore
+release-keystore.jks
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kotlin
+*.class
+
+# APK
+*.apk
+*.aab
+
+# Debug
+*.hprof
+
+# Plan docs (keep in repo)
+# CHHOTU_GESTURE_ANDROID_PLAN.md
+# TOUCH_FIX_PLAN.md
