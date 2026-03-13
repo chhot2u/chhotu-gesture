@@ -2,7 +2,9 @@ package com.chhotu.gesture.di
 
 import com.chhotu.gesture.actions.ActionExecutor
 import com.chhotu.gesture.actions.ActionRegistry
+import com.chhotu.gesture.actions.NavigationActions
 import com.chhotu.gesture.engine.ConfidenceScorer
+import com.chhotu.gesture.engine.ContinuousScrollEngine
 import com.chhotu.gesture.engine.GestureClassifier
 import com.chhotu.gesture.engine.GestureDebouncer
 import com.chhotu.gesture.engine.LandmarkNormalizer
@@ -47,6 +49,21 @@ object EngineModule {
     @Singleton
     fun provideActionRegistry(): ActionRegistry {
         return ActionRegistry()
+    }
+
+    @Provides
+    @Singleton
+    fun provideContinuousScrollEngine(): ContinuousScrollEngine {
+        return ContinuousScrollEngine()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNavigationActions(
+        actionRegistry: ActionRegistry,
+        scrollEngine: ContinuousScrollEngine
+    ): NavigationActions {
+        return NavigationActions(actionRegistry, scrollEngine)
     }
 
     @Provides

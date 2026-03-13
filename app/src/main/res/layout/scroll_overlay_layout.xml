@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="280dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/overlay_background"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/iv_direction"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/arrow_up_float"
+        android:tint="#FFFFFFFF"
+        android:contentDescription="Direction" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="SCROLLING"
+        android:textColor="#FFFFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/btn_slow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/speed_btn_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="#FFFFFFFF"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/btn_medium"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/speed_btn_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="M"
+        android:textColor="#FFFFFFFF"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/btn_fast"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/speed_btn_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="F"
+        android:textColor="#FFFFFFFF"
+        android:textSize="10sp" />
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="#FFFFFFFF"
+        android:contentDescription="Close" />
+
+</LinearLayout>

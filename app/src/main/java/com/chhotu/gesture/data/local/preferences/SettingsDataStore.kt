@@ -29,6 +29,7 @@ class SettingsDataStore @Inject constructor(
         val IDLE_TIMEOUT_SECONDS = intPreferencesKey("idle_timeout_seconds")
         val IS_FIRST_LAUNCH = booleanPreferencesKey("is_first_launch")
         val ADAPTIVE_FPS = booleanPreferencesKey("adaptive_fps")
+        val SCROLL_SPEED = intPreferencesKey("scroll_speed") // 0=SLOW, 1=MEDIUM, 2=FAST
     }
 
     val detectionEnabled: Flow<Boolean> = context.dataStore.data
@@ -51,6 +52,9 @@ class SettingsDataStore @Inject constructor(
 
     val adaptiveFps: Flow<Boolean> = context.dataStore.data
         .map { it[Keys.ADAPTIVE_FPS] ?: true }
+
+    val scrollSpeed: Flow<Int> = context.dataStore.data
+        .map { it[Keys.SCROLL_SPEED] ?: 1 } // default MEDIUM
 
     suspend fun setDetectionEnabled(enabled: Boolean) {
         context.dataStore.edit { it[Keys.DETECTION_ENABLED] = enabled }
@@ -78,5 +82,9 @@ class SettingsDataStore @Inject constructor(
 
     suspend fun setAdaptiveFps(enabled: Boolean) {
         context.dataStore.edit { it[Keys.ADAPTIVE_FPS] = enabled }
+    }
+
+    suspend fun setScrollSpeed(speedOrdinal: Int) {
+        context.dataStore.edit { it[Keys.SCROLL_SPEED] = speedOrdinal }
     }
 }

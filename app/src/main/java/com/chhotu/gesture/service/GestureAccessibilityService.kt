@@ -3,9 +3,14 @@ package com.chhotu.gesture.service
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.GestureDescription
 import android.graphics.Path
+import android.os.Handler
+import android.os.Looper
 import android.view.accessibility.AccessibilityEvent
+import com.chhotu.gesture.engine.ContinuousScrollEngine
 
 class GestureAccessibilityService : AccessibilityService() {
+
+    private val handler = Handler(Looper.getMainLooper())
 
     companion object {
         var instance: GestureAccessibilityService? = null
@@ -13,16 +18,11 @@ class GestureAccessibilityService : AccessibilityService() {
         var isRunning: Boolean = false
             private set
 
-        /**
-         * FIX: Touch guard — when true, suppress all synthetic gestures.
-         * Set from the DetectScreen/ViewModel when user is actively touching.
-         */
+        var scrollEngine: ContinuousScrollEngine? = null
+
         @Volatile
         var isUserTouchActive: Boolean = false
 
-        /**
-         * FIX: Cooldown between synthetic gestures to prevent rapid-fire conflicts.
-         */
         private const val GESTURE_COOLDOWN_MS = 400L
         private var lastGestureTime: Long = 0L
 
@@ -51,7 +51,6 @@ class GestureAccessibilityService : AccessibilityService() {
     }
 
     fun performScroll(down: Boolean) {
-        // FIX: Skip synthetic scroll if user is touching the screen
         if (!canDispatch()) return
 
         val displayMetrics = resources.displayMetrics
@@ -80,7 +79,19 @@ class GestureAccessibilityService : AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        // No-op: we only use this service for performing actions, not observing events
+        when (event?.eventType) {
+            AccessibilityEvent.TYPE_TOUCH_INTERACTION_START -> {
+                isUserTouchActive = true
+                scrollEngine?.pauseScroll()
+            }
+            AccessibilityEvent.TYPE_TOUCH_INTERACTION_END -> {
+                handler.removeCallbacksAndMessages(null)
+                handler.postDelayed({
+                    isUserTouchActive = false
+                    scrollEngine?.resumeScroll()
+                }, 300L)
+            }
+        }
     }
 
     override fun onInterrupt() {}
@@ -93,6 +104,7 @@ class GestureAccessibilityService : AccessibilityService() {
 
     override fun onDestroy() {
         super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
         instance = null
         isRunning = false
     }
